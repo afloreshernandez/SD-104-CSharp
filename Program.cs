@@ -1,51 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
-namespace christmasTree
+namespace MusicStore
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-
-
-               
-                for (int i = 1; i <= 10; i++)
-                {
-                    for (int j = 1; j <= i; j++)
-                    {
-
-
-                        Console.Write("*");
-
-
-                    }
-
-                    Console.Write("\n");
-                }
-            
-
-            for (int i = 10; i >= 1; i--)
-            {
-                for (int j = 1; j <= i; j++)
-                {
-
-                    
-                    Console.Write("+");
-                    
-
-                }
-
-                Console.Write("\n");
-            }
-
-
+            CreateWebHostBuilder(args).Build().Run();
         }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
     }
-            
-        }
-    
-
+}
